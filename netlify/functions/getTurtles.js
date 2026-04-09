@@ -2,9 +2,9 @@ const neo4j = require('neo4j-driver');
 
 exports.handler = async (event, context) => {
   // Use .trim() to wipe out any invisible spaces from the environment variables
-  const uri = (process.env.NEO4J_URI || "").trim();
-  const user = (process.env.NEO4J_USER || "neo4j").trim();
-  const password = (process.env.NEO4J_PASSWORD || "").trim();
+  const uri = "neo4j+s://e51ffb21.databases.neo4j.io";
+  const user = "neo4j";
+  const password ="pOP08DS_Mw-oDLn6XSdg-wVsJS1GCnBoRksqPKqxBZw";
 
   const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
   const session = driver.session();
