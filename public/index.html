@@ -15,14 +15,13 @@
 
     <script>
         async function fetchTurtles() {
-            const res = await fetch('/.netlify/functions/getTurtles');
-            const data = await res.json();
-            const container = document.getElementById('turtle-list');
             container.innerHTML = data.map(t => `
                 <div class="turtle-card">
+                    <div style="font-size: 40px;">🐢</div>
                     <h3>${t.name}</h3>
-                    <p>Species: ${t.species}</p>
-                    <p>Age: ${t.age} years</p>
+                    <hr style="border: 0; border-top: 1px solid #4fc3f7; margin: 10px 0;">
+                    <p><strong>Species:</strong> ${t.species}</p>
+                    <p><strong>Status:</strong> Active in Tank</p>
                 </div>
             `).join('');
         }
