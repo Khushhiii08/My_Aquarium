@@ -1,0 +1,12 @@
+[build]
+  # This is the folder containing your index.html
+  publish = "public"
+
+  # This is the folder containing your netlify/functions/
+  functions = "netlify/functions"
+
+[[redirects]]
+  # This makes it easier for your frontend to find your API
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
