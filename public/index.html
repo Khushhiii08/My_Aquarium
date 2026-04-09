@@ -15,15 +15,25 @@
 
     <script>
         async function fetchTurtles() {
-            container.innerHTML = data.map(t => `
-                <div class="turtle-card">
-                    <div style="font-size: 40px;">🐢</div>
-                    <h3>${t.name}</h3>
-                    <hr style="border: 0; border-top: 1px solid #4fc3f7; margin: 10px 0;">
-                    <p><strong>Species:</strong> ${t.species}</p>
-                    <p><strong>Status:</strong> Active in Tank</p>
-                </div>
-            `).join('');
+            try {
+                const res = await fetch('/.netlify/functions/getTurtles');
+                const data = await res.json();
+                
+                // This is the missing line!
+                const container = document.getElementById('turtle-list');
+                
+                container.innerHTML = data.map(t => `
+                    <div class="turtle-card">
+                        <div style="font-size: 40px;">🐢</div>
+                        <h3>${t.name}</h3>
+                        <p>Species: ${t.species}</p>
+                        <p>Age: ${t.age}</p>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error("Tank leak!", err);
+                document.getElementById('turtle-list').innerText = "Failed to load turtles.";
+            }
         }
         fetchTurtles();
     </script>
