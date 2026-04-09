@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>The Turtle Tank</title>
+</head>
+<body>
+    <div class="aquarium">
+        <h1>🐢 Turtle Graph Tank</h1>
+        <div id="turtle-list">Loading the tank...</div>
+        
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <script>
+        async function fetchTurtles() {
+            const res = await fetch('/.netlify/functions/getTurtles');
+            const data = await res.json();
+            const container = document.getElementById('turtle-list');
+            container.innerHTML = data.map(t => `
+                <div class="turtle-card">
+                    <h3>${t.name}</h3>
+                    <p>Species: ${t.species}</p>
+                    <p>Age: ${t.age} years</p>
+                </div>
+            `).join('');
+        }
+        fetchTurtles();
+    </script>
+</body>
+</html>

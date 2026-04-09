@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(to bottom, #1e5799 0%, #000033 100%);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.aquarium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.turtle-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #4fc3f7;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s;
+}
+
+.turtle-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Simple Bubble Animation */
+.bubble {
+    position: absolute;
+    bottom: -10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: rise 5s infinite ease-in;
+}
+
+@keyframes rise {
+    from { bottom: -10px; opacity: 1; }
+    to { bottom: 100%; opacity: 0; }
+}
